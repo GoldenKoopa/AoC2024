@@ -2,6 +2,7 @@
 */*.in
 */*.out
 */*/tests/
+*/*/description.md
 
 
 

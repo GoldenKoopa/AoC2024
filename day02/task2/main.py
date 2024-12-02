@@ -1,23 +1,23 @@
 """
-
 Author: GoldenKoopa
 Puzzle: Advent of Code (year=2024 ; day=2 ; task=2)
 https://adventofcode.com/2024/day/2
 """
 
+from icecream import ic
+import functools
 import sys
 import pathlib
-sys.path.append(pathlib.Path(__file__).parent.parent.parent.absolute().as_posix())
+sys.path.append(pathlib.Path(
+    __file__).parent.parent.parent.absolute().as_posix())
 
-import functools
 print = functools.partial(print, flush=True)
 
-from icecream import ic
 
 def is_monotone(lst):
     if len(lst) < 2:
         return True
-    
+
     if lst[0] < lst[1]:
         for i in range(len(lst) - 1):
             if lst[i] >= lst[i + 1]:
@@ -30,6 +30,7 @@ def is_monotone(lst):
                 return False
         return True
 
+
 def has_valid_distances(lst):
     for i in range(len(lst) - 1):
         diff = abs(lst[i] - lst[i + 1])
@@ -37,23 +38,23 @@ def has_valid_distances(lst):
             return False
     return True
 
+
 def main():
     sum = 0
     for line in sys.stdin:
-        report = list(map(int, line.split())) 
+        report = list(map(int, line.split()))
         if is_monotone(report) and has_valid_distances(report):
             sum += 1
             continue
-        
+
         for i in range(len(report)):
             report_copy = report[::]
             report_copy.pop(i)
             if is_monotone(report_copy) and has_valid_distances(report_copy):
                 sum += 1
                 break
-    
-    print(sum)
 
+    print(sum)
 
 
 if __name__ == "__main__":

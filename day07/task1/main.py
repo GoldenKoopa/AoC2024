@@ -4,14 +4,7 @@ Puzzle: Advent of Code (year=2024 ; day=7 ; task=1)
 https://adventofcode.com/2024/day/7
 """
 
-import functools
 import sys
-import pathlib
-from icecream import ic
-sys.path.append(pathlib.Path(
-    __file__).parent.parent.parent.absolute().as_posix())
-
-print = functools.partial(print, flush=True)
 
 
 def main():
@@ -20,7 +13,7 @@ def main():
         line_total, nums = line.split(":")
         line_total = int(line_total)
         nums = list(map(int, nums.split()))
-        
+
         results = []
         while nums:
             current_num = nums.pop(0)
@@ -35,10 +28,8 @@ def main():
 
         if line_total in results:
             total += line_total
-    
+
     print(total)
-        
-        
 
 
 if __name__ == "__main__":
